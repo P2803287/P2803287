@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Meta tags for character set and viewport settings -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- CSS stylesheets -->
+  <link href="styling/styling.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
+  <!-- Favicon -->
+  <link rel="icon" href="Images/Favicon main.png" type="image/x-icon">
+
+  <!-- Page title -->
+  <title>Reuben Jeanne - Photography Portfolio</title>
+
+</head>
+<body>
+
+  <!-- Header section -->
+  <header>
+    <!-- Logo -->
+    <img src="Images/Logo Design.png" alt="Logo" width="150">
+    
+    <!-- Social media links -->
+    <div class="social-media">
+      <a href="https://www.facebook.com/reubenjeanne" target="_blank" rel="noopener noreferrer"><img src="Images/Facebook Logo.png" alt="Facebook"></a>
+      <a href="https://twitter.com/reubenjeanne" target="_blank" rel="noopener noreferrer"><img src="Images/X Logo.png" alt="X"></a>
+      <a href="https://www.instagram.com/reuben_jeanne" target="_blank" rel="noopener noreferrer"><img src="Images/Instagram Logo.png" alt="Instagram"></a>
+      
+    </div>
+  </header>
+
+  <!-- Navigation menu -->
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="#about">About</a>
+  </nav>
+
+  <!-- Title section -->
+  <section>
+    <h2>Favorite Images from my Recent Projects:</h2>
+    <p></p>
+  </section>
+
+  <!-- Image sliders with descriptions -->
+  <div class="slider-container">
+    <!-- Slider 1 -->
+    <div class="image-slider" id="slider1">
+        <img class="slider-image" src="Images/ruby1.JPG" alt="'Cornfields'">
+        <img class="slider-image" src="Images/ruby2.JPG" alt="'Cornfields'">
+        <img class="slider-image" src="Images/ruby3.JPG" alt="'Cornfields'">
+        <img class="slider-image" src="Images/ruby4.JPG" alt="'Cornfields'">
+    </div>
+    <div class="image-descriptions" id="description1">
+        <p></p>
+    </div>
+  </div>
+
+  <!-- Slider 2 -->
+  <div class="slider-container">
+    <div class="image-slider" id="slider2">
+        <img class="slider-image" src="Images/alex1.jpg" alt="'Me Myself and I'">
+        <img class="slider-image" src="Images/alex2.jpg" alt="'Me Myself and I'">
+        <img class="slider-image" src="Images/alex3.jpg" alt="'Me Myself and I'">
+        <img class="slider-image" src="Images/alex4.jpg" alt="'Me Myself and I'">
+    </div>
+    <div class="image-descriptions" id="description2">
+        <p></p>
+    </div>
+  </div>
+
+  <!-- Slider 3 -->
+  <div class="slider-container">
+    <div class="image-slider" id="slider3">
+      <img class="slider-image" src="Images/woods1.jpg" alt="'Atumn Adventure'">
+      <img class="slider-image" src="Images/woods2.jpg" alt="'Atumn Adventure'">
+      <img class="slider-image" src="Images/woods3.jpg" alt="'Atumn Adventure'">
+    </div>
+    <div class="image-descriptions" id="description3">
+        <p></p>
+    </div>
+  </div>
+
+  <!-- JavaScript for image sliders -->
+  <script>
+    function createImageSlider(sliderId, descriptionId) {
+      const imageSlider = document.getElementById(sliderId);
+      const descriptionText = document.getElementById(descriptionId);
+      const images = imageSlider.getElementsByClassName('slider-image');
+      let currentIndex = 0;
+
+      function updateDescription() {
+          const altText = images[currentIndex].getAttribute('alt');
+          descriptionText.textContent = altText;
+      }
+
+      function nextImage() {
+          currentIndex = (currentIndex + 1) % images.length;
+          updateDescription();
+          updateSlider();
+      }
+
+      function updateSlider() {
+          const translateValue = -currentIndex * 100 + '%';
+          imageSlider.style.transform = 'translateX(' + translateValue + ')';
+      }
+
+      imageSlider.addEventListener('click', nextImage);
+
+      updateDescription();
+    }
+
+    
+    createImageSlider('slider1', 'description1');
+    createImageSlider('slider2', 'description2');
+    createImageSlider('slider3', 'description3');
+  </script>
+
+  <!-- Button to scroll back to the top of the page -->
+  <button id="backToTopBtn" onclick="scrollToTop()">Back to Top</button>
+
+  <!-- JavaScript for scrolling back to the top and showing the button -->
+  <script>
+    function scrollToTop() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+
+    window.onscroll = function() {
+      var btn = document.getElementById("backToTopBtn");
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        btn.style.display = "block";
+      } else {
+        btn.style.display = "none";
+      }
+    };
+  </script>
+
+  <!-- Blank space so the third image slider title can be seen -->
+  <div class="blank-space"></div>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2024 Reuben Jeanne
+  </footer>
+
+</body>
+</html>
